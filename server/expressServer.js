@@ -23,6 +23,14 @@ const jwtSecret = 'chat-pallette';
 
 // Middleware
 app.use(bodyParser.json());
+
+app.get('*', (req, res, next) => {
+	console.log(req.path)
+	// if (req.path === '/api/socket.io.js') {
+	// }
+	next();
+})
+
 app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use('/api/messages', expressJwt({ secret: jwtSecret }));
 
