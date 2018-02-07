@@ -6,11 +6,6 @@ body {
 
 	margin: 0;
 
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-
 	font: 16px 'Montserrat', sans-serif;
 
 	color: black;
@@ -21,19 +16,5 @@ body {
 h1, h2, h3, h4, h5, h6, p {
 	padding: 0;
 	margin: 0;
-}
-
-#app-header {
-	align-self: stretch;
-
-	padding: .75rem 0;
-	box-shadow: 0 0 15px rgba(0, 0, 0, .8);
-	margin: 0 0 1rem;
-
-	font-size: 3rem;
-	text-align: center;
-	text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.4);
-
-	background-image: url('/assets/top-bar.jpg')
 }
 
