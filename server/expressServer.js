@@ -23,8 +23,8 @@ const jwtSecret = 'chat-pallette';
 
 // Middleware
 app.use(bodyParser.json());
-app.use(express.static(path.resolve(__dirname, '../client')));
-app.use('/messages', expressJwt({ secret: jwtSecret }));
+app.use(express.static(path.resolve(__dirname, '../dist')));
+app.use('/api/messages', expressJwt({ secret: jwtSecret }));
 
 
 
@@ -32,13 +32,9 @@ app.use('/messages', expressJwt({ secret: jwtSecret }));
 //												API Endpoints
 //---------------------------------------------------------------
 
-app.get('/', (req, res) => {
-	res.sendFile(path.resolve(__dirname, '../index.html'));
-});
-
 
 //create/send token on valid login
-app.post('/login', (req, res) => {
+app.post('/api/login', (req, res) => {
 	Users.getUser(req.body.username, req.body.password, user => {
 		if (user) {
 			res
@@ -53,7 +49,7 @@ app.post('/login', (req, res) => {
 
 
 // add new user to db and send client a session token
-app.post('/signup', (req, res) => {
+app.post('/api/signup', (req, res) => {
 	Users.userExists(req.body.username, user => {
 		if (user) {
 			res.sendStatus(400);		// username already taken
@@ -75,7 +71,7 @@ app.post('/signup', (req, res) => {
 
 
 // retreive 100 most recent messages
-app.get('/messages', (req, res) => {
+app.get('/api/messages', (req, res) => {
 	Messages.getAllMessages(msgs => {
 		if (msgs) {
 			res
@@ -89,15 +85,15 @@ app.get('/messages', (req, res) => {
 });
 
 
-// redirect invalid paths
+// redirect invalid paths to homepage
 app.get('*', (req, res) => {
-	res.redirect(301, '/');
+	res.sendFile(path.resolve(__dirname, '../dist/index.html'));
 });
 
 
-const port = process.argv[2] ? Number(process.argv[2]) : 8080;
+const port = process.env.PORT || 8080;
 
 // export app and JWT secret for socket.io
-exports.app = app.listen(port);
+exports.app = app.listen(port, () => console.log(`Express is running on localhost:${port}`));
 exports.jwtSecret = jwtSecret;
 
