@@ -1,1 +1,25 @@
-/* You can add global styles to this file, and also import other style files */
+
+
+body {
+	width: 100vw;
+	min-height: 100vh;
+
+	margin: 0;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+
+	font: 16px 'Montserrat', sans-serif;
+
+	color: black;
+	background-color: #e3e5f9;
+}
+
+
+h1, h2, h3, h4, h5, h6, p {
+	padding: 0;
+	margin: 0;
+}
+
