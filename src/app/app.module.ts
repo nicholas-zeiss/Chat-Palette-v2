@@ -1,48 +1,36 @@
 
 
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+
+import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
-import { SignupComponent } from './signup/signup.component';
-import { LoginComponent } from './login/login.component';
+import { SigninComponent } from './signin/signin.component';
 
-
-const routes: Routes = [
-	{
-		path: 'chat',
-		component:	ChatComponent
-	},
-	{
-		path: 'login',
-		component: LoginComponent
-	},
-	{
-		path: 'signup',
-		component: SignupComponent
-	},
-	{
-		path: '**',
-		redirectTo: '/login'
-	}
-];
+import { AuthGuard } from './auth/auth-guard.service';
+import { AuthService } from './auth/auth.service';
 
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		ChatComponent,
-		SignupComponent,
-		LoginComponent
+		SigninComponent
 	],
 	imports: [
+		AppRoutingModule,
 		BrowserModule,
-		RouterModule.forRoot(routes)
+		FormsModule
 	],
-	providers: [],
-	bootstrap: [ AppComponent ]
+	providers: [
+		AuthGuard,
+		AuthService
+	],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
 
