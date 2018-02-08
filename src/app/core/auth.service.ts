@@ -20,10 +20,6 @@ export class AuthService {
 		this.authenticated = true;
 	}
 
-	verifyToken() {
-
-	}
-
 	removeToken() {
 		window.sessionStorage.clear();
 		this.authenticated = false;

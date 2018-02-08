@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 
 import { AuthGuard } from './auth-guard.service';
 import { AuthService } from './auth.service';
+import { PathingService } from './pathing.service';
 import { ServerCallsService } from './server-calls.service';
 
 
@@ -21,6 +22,7 @@ import { ServerCallsService } from './server-calls.service';
 	providers: [
 		AuthGuard,
 		AuthService,
+		PathingService,
 		ServerCallsService
 	]
 })
