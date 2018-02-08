@@ -4,12 +4,12 @@
 	<h1>{{ content.header }}</h1>
 	<form>
 		<div>
-			<input type="text" placeholder="username" name="username" [(ngModel)]="user.username" autofocus required/>
-			<input type="password" placeholder="password" name="password" [(ngModel)]="user.password" required/>
+			<input type="text" placeholder="username" name="username" [(ngModel)]="user.username" (ngModelChange)="errorMsg = ''" autofocus required/>
+			<input type="password" placeholder="password" name="password" [(ngModel)]="user.password" (ngModelChange)="errorMsg = ''" required/>
 		</div>
 		<p *ngIf="errorMsg">{{ errorMsg }}</p>
 		<input type="submit" value="{{ content.submitMsg }}" (click)="handleSubmit()"/>
 	</form>
-	<a routerLink="{{ content.link }}">{{ content.linkMsg }}</a>
+	<button (click)="switchView()">{{ content.viewMsg }}</button>
 </section>
 
