@@ -1,15 +1,15 @@
 
 
 <section id="signin">
-  <h1>{{ content.header }}</h1>
-  <form>
-  	<div>
-	    <input type="text" placeholder="username" name="username" [(ngModel)]="user.username" autofocus required/>
-	    <input type="password" placeholder="password" name="password" [(ngModel)]="user.password" required/>
-  	</div>
-  	<p *ngIf="errorMsg">{{ errorMsg }}</p>
-    <input type="submit" value="Login"/>
-  </form>
-  <a routerLink="{{ content.link }}">{{ content.linkMsg }}</a>
+	<h1>{{ content.header }}</h1>
+	<form>
+		<div>
+			<input type="text" placeholder="username" name="username" [(ngModel)]="user.username" autofocus required/>
+			<input type="password" placeholder="password" name="password" [(ngModel)]="user.password" required/>
+		</div>
+		<p *ngIf="errorMsg">{{ errorMsg }}</p>
+		<input type="submit" value="{{ content.submitMsg }}" (click)="handleSubmit()"/>
+	</form>
+	<a routerLink="{{ content.link }}">{{ content.linkMsg }}</a>
 </section>
 

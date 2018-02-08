@@ -3,7 +3,7 @@
 <div id="app">
 	<h1 id="app-header">WELCOME TO CHAT PALETTE</h1>
 	<section id="view">
-		<router-outlet></router-outlet>
+		<router-outlet (tokenEmitter)="setToken($event)"></router-outlet>
 	</section>
 	<div id="empty"></div>
 </div>

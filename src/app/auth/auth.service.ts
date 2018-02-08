@@ -7,7 +7,7 @@ export class AuthService {
 
 	constructor() { }
 
-	get isLoggedIn() {
+	get isLoggedIn(): boolean {
 		return false;
 	}
 }
