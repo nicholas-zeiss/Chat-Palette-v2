@@ -5,23 +5,8 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../auth/auth.service';
 import { ServerCallsService } from '../api/server-calls.service';
-import { User } from './user';
-
-
-const CONTENT = {
-	login: {
-		header:  'User Login',
-		otherView: 'signup',
-		submitMsg: 'Login',
-		viewMsg:  'Need an account? Sign up here!'
-	},
-	signup: {
-		header:  'Signup',
-		otherView: 'login',
-		submitMsg: 'Signup',
-		viewMsg:  'Already have an account? Login'
-	}
-};
+import { CONTENT } from './signin-content'
+import { User } from './user.model';
 
 
 @Component({
@@ -45,14 +30,14 @@ export class SigninComponent {
 		private serverCalls: ServerCallsService
 	) {
 		if (authService.isLoggedIn) {
-			this.router.navigateByUrl('/chat', { skipLocationChange: true });
+			this.router.navigateByUrl('/chat');
 		}
 
 		this.failure = (errorMsg: string) => { this.errorMsg = errorMsg; };
 
 		this.success = (JWT: string) => {
 			this.authService.setToken(JWT);
-			this.router.navigateByUrl('/chat', { skipLocationChange: true });
+			this.router.navigateByUrl('/chat');
 		};
 	}
 
