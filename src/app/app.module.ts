@@ -7,18 +7,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 
 import { AppComponent } from './app.component';
-import { ChatComponent } from './chat/chat.component';
 
 
 @NgModule({
-	declarations: [
-		AppComponent,
-		ChatComponent
-	],
+	declarations: [AppComponent],
 	imports: [
 		AppRoutingModule,
 		BrowserModule,
-		CoreModule,
+		CoreModule
 	],
 	bootstrap: [AppComponent]
 })

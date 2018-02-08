@@ -32,7 +32,7 @@ export class SigninComponent {
 		if (authService.isLoggedIn) {
 			this.router.navigateByUrl('/chat');
 		}
-		console.log('signin constructor')
+
 		this.failure = (errorMsg: string) => { this.errorMsg = errorMsg; };
 
 		this.success = (JWT: string) => {
