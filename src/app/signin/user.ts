@@ -1,13 +1,8 @@
 
 
 export class User {
-	password: string;
-	username: string;
-
-	constructor() {
-		this.password = '';
-		this.username = '';
-	}
+	password = '';
+	username =  '';
 
 	reset() {
 		this.password = '';

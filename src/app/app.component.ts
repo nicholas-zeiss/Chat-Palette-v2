@@ -10,9 +10,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 	title = 'Chat Palette';
-
-	setToken(token: string) {
-		console.log('app.component received token: ' + token);
-	}
 }
 

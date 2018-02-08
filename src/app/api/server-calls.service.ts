@@ -23,16 +23,16 @@ export class ServerCallsService {
   login(username: string, password: string) {
   	return this.http
   		.post<string>('/api/login', { username, password })
-  		.pipe(catchError(this.sendErrorMessage));
+  		.pipe(catchError(this.sendAuthErrorMessage));
   }
 
   signup(username: string, password: string) {
   	return this.http
   		.post<string>('/api/signup', { username, password })
-  		.pipe(catchError(this.sendErrorMessage));
+  		.pipe(catchError(this.sendAuthErrorMessage));
   }
 
-  private sendErrorMessage(err: HttpErrorResponse) {
+  private sendAuthErrorMessage(err: HttpErrorResponse) {
   	return new ErrorObservable(ERROR_MSGS[err.status] || 'Unknown error');
   }
 }
