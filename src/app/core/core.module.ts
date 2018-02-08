@@ -12,17 +12,17 @@ import { ServerCallsService } from './server-calls.service';
 
 
 @NgModule({
-  imports: [
-    CommonModule,
-    HttpClientModule,
-    RouterModule
-  ],
-  exports: [RouterModule],
-  providers: [
-  	AuthGuard,
-  	AuthService,
-  	ServerCallsService
-  ]
+	imports: [
+		CommonModule,
+		HttpClientModule,
+		RouterModule
+	],
+	exports: [RouterModule],
+	providers: [
+		AuthGuard,
+		AuthService,
+		ServerCallsService
+	]
 })
 export class CoreModule { }
 

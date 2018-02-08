@@ -9,12 +9,12 @@ import { ChatComponent } from './chat.component';
 
 
 @NgModule({
-  imports: [
-    ChatRoutingModule,
-    CommonModule,
-    FormsModule
-  ],
-  declarations: [ChatComponent]
+	imports: [
+		ChatRoutingModule,
+		CommonModule,
+		FormsModule
+	],
+	declarations: [ChatComponent]
 })
 export class ChatModule { }
 

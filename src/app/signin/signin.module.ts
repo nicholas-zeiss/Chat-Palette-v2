@@ -8,12 +8,12 @@ import { SigninRoutingModule } from './signin-routing.module';
 import { SigninComponent } from './signin.component';
 
 @NgModule({
-  imports: [
-  	CommonModule,
-  	FormsModule,
-  	SigninRoutingModule
-  ],
-  declarations: [SigninComponent]
+	imports: [
+		CommonModule,
+		FormsModule,
+		SigninRoutingModule
+	],
+	declarations: [SigninComponent]
 })
 export class SigninModule { }
 

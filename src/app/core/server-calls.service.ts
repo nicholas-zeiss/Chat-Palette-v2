@@ -18,22 +18,22 @@ const ERROR_MSGS = {
 @Injectable()
 export class ServerCallsService {
 
-  constructor(private http: HttpClient) { }
+	constructor(private http: HttpClient) { }
 
-  login(username: string, password: string) {
-  	return this.http
-  		.post<string>('/api/login', { username, password })
-  		.pipe(catchError(this.sendAuthErrorMessage));
-  }
+	login(username: string, password: string) {
+		return this.http
+			.post<string>('/api/login', { username, password })
+			.pipe(catchError(this.sendAuthErrorMessage));
+	}
 
-  signup(username: string, password: string) {
-  	return this.http
-  		.post<string>('/api/signup', { username, password })
-  		.pipe(catchError(this.sendAuthErrorMessage));
-  }
+	signup(username: string, password: string) {
+		return this.http
+			.post<string>('/api/signup', { username, password })
+			.pipe(catchError(this.sendAuthErrorMessage));
+	}
 
-  private sendAuthErrorMessage(err: HttpErrorResponse) {
-  	return new ErrorObservable(ERROR_MSGS[err.status] || 'Unknown error');
-  }
+	private sendAuthErrorMessage(err: HttpErrorResponse) {
+		return new ErrorObservable(ERROR_MSGS[err.status] || 'Unknown error');
+	}
 }
 

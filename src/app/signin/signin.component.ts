@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 
 import { AuthService } from '../core/auth.service';
 import { ServerCallsService } from '../core/server-calls.service';
-import { CONTENT } from './signin-content'
+import { CONTENT } from './signin-content';
 import { User } from './user.model';
 
 
