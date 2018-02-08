@@ -18,7 +18,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'login',
-		component: SigninComponent
+		loadChildren: 'app/signin/signin.module#SigninModule'
 	},
 	{
 		path: '**',
