@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { ChatComponent } from './chat/chat.component';
 import { SigninComponent } from './signin/signin.component';
 
-import { AuthGuard } from './auth/auth-guard.service';
+import { AuthGuard } from './core/auth-guard.service';
 
 
 const routes: Routes = [

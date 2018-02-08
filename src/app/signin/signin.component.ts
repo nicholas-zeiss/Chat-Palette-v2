@@ -3,8 +3,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { AuthService } from '../auth/auth.service';
-import { ServerCallsService } from '../api/server-calls.service';
+import { AuthService } from '../core/auth.service';
+import { ServerCallsService } from '../core/server-calls.service';
 import { CONTENT } from './signin-content'
 import { User } from './user.model';
 
