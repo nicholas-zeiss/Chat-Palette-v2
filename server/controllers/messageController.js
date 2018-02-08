@@ -11,21 +11,12 @@ const Message = require('../models/message.js');
 exports.createMessage = (msg, cb) => {
 	new Message(msg)
 		.save()
-		.then(msg => msg ? cb(msg.attributes) : cb(null));		// return msg.attributes only to unwrap data from bookshelf wrapper	
+		.then(msg => msg ? cb(msg.toJSON()) : cb(null));
 };
 
 exports.getAllMessages = cb => {
 	new Message()
 		.fetchAll()
-		.then(msgs => {
-			if (msgs) {
-				cb(msgs
-					.toArray()
-					.map(msg => msg.attributes)			// again unwrap data
-				);
-			} else {
-				cb(null);
-			}
-		});
+		.then(msgs => msgs ? cb(msgs.toJSON()) : cb(null));
 };
 

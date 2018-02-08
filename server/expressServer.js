@@ -39,7 +39,7 @@ app.post('/api/login', (req, res) => {
 		if (user) {
 			res
 				.status(200)
-				.json(jwt.sign(user, jwtSecret, { expiresIn: '12h' }));
+				.json(jwt.sign({ username: user.username }, jwtSecret, { expiresIn: '12h' }));
 
 		}	else {
 			res.sendStatus(404);
@@ -59,7 +59,7 @@ app.post('/api/signup', (req, res) => {
 				if (user) {
 					res
 						.status(201)
-						.json(jwt.sign(user, jwtSecret, { expiresIn: '12h' }));
+						.json(jwt.sign({ username: user.username }, jwtSecret, { expiresIn: '12h' }));
 
 				} else {
 					res.sendStatus(500);

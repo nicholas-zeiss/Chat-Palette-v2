@@ -15,13 +15,7 @@ exports.createUser = (username, password, cb) => {
 		password: bcrypt.hashSync(password)
 	})
 		.save()
-		.then(user => {
-			if (user) {
-				cb(user.attributes);
-			} else {
-				cb(null);
-			}
-		});
+		.then(user => user ? cb(user.toJSON()) : cb(null));
 };
 
 
@@ -29,8 +23,8 @@ exports.getUser = (username, password, cb) => {
 	new User({ username })
 		.fetch()
 		.then(user => {
-			if (user && bcrypt.compareSync(password, user.attributes.password)) {
-				cb(user.attributes);
+			if (user && bcrypt.compareSync(password, user.get('password'))) {
+				cb(user.toJSON());
 			} else {
 				cb(null);
 			}
@@ -41,6 +35,6 @@ exports.getUser = (username, password, cb) => {
 exports.userExists = (username, cb) => {
 	new User({ username })
 		.fetch()
-		.then(cb);
+		.then(user => user ? cb(user.toJSON()) : cb(null));
 };
 
