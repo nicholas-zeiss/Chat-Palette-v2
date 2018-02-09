@@ -18,7 +18,7 @@ import { User } from './user.model';
 export class SigninComponent {
 
 	content = CONTENT.login;
-	errorMsg = '';
+	serverError = '';
 	user = new User();
 	view = 'login';
 	failure: (string) => void;
@@ -35,7 +35,7 @@ export class SigninComponent {
 			this.pathingService.pathToChat();
 		}
 
-		this.failure = (errorMsg: string) => { this.errorMsg = errorMsg; };
+		this.failure = (serverError: string) => { this.serverError = serverError; };
 
 		this.success = (JWT: string) => {
 			this.authService.setToken(JWT);
@@ -50,7 +50,7 @@ export class SigninComponent {
 	}
 
 	switchView() {
-		this.errorMsg = '';
+		this.serverError = '';
 		this.user.reset();
 		this.view = this.content.otherView;
 		this.content = CONTENT[this.view];

@@ -2,7 +2,7 @@
 
 <section id="signin">
 	<h1>{{ content.header }}</h1>
-	<form>
+	<form (ngSubmit)="handleSubmit()" #userForm="ngForm">
 		<div>
 			<input name="username"
 				placeholder="username"
@@ -10,19 +10,21 @@
 				autofocus
 				required
 				[(ngModel)]="user.username"
-				(ngModelChange)="errorMsg = ''"
+				(ngModelChange)="serverError = ''"
 			/>
 			<input name="password"
 				placeholder="password"
 				type="password"
 				required
 				[(ngModel)]="user.password"
-				(ngModelChange)="errorMsg = ''"
+				(ngModelChange)="serverError = ''"
 			/>
 		</div>
-		<p *ngIf="errorMsg">{{ errorMsg }}</p>
-		<input type="submit" value="{{ content.submitMsg }}" (click)="handleSubmit()"/>
+		<p *ngIf="serverError">{{ serverError }}</p>
+		<input [disabled]="!userForm.form.valid" type="submit" value="{{ content.submitMsg }}"/>
 	</form>
-	<button (click)="switchView()">{{ content.viewMsg }}</button>
+	<button (click)="switchView()">
+		{{ content.viewMsg }}
+	</button>
 </section>
 

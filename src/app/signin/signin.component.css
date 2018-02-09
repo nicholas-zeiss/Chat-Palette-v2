@@ -79,10 +79,15 @@
 			cursor: pointer;
 
 			transition: box-shadow .1s ease-out;
+			transition: background-color .25s ease-out;
 		}
 
-		#signin form input[type='submit']:hover {
+		#signin form input[type='submit']:enabled:hover {
 			box-shadow: 0 0 10px 1px black;
+		}
+
+		#signin form input[type='submit']:disabled {
+			background-color: #3d803f;
 		}
 
 		#signin form p {
