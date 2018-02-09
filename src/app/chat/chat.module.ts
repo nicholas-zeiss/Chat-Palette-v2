@@ -14,7 +14,9 @@ import { ChatComponent } from './chat.component';
 		CommonModule,
 		FormsModule
 	],
-	declarations: [ChatComponent]
+	declarations: [
+		ChatComponent,
+	]
 })
 export class ChatModule { }
 

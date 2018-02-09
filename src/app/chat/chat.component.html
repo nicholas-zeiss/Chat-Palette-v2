@@ -1,6 +1,53 @@
 
 
-<p>
-  LOOK AT ME I AM CHAT
-</p>
+<section id="chat-container">
+	<header id="chat-header">
+		<h2>Showing all messages</h2>
+
+		<span>
+			<span>Filter:</span>
+			<button class="clear-button active">All</button>
+			<button class="red-button">R</button>
+			<button class="green-button">G</button>
+			<button class="blue-button">B</button>
+			<button class="yellow-button">Y</button>
+		</span>
+	</header>
+	
+	
+	<section id="messages-container">
+		<div class="message green">
+			<span><strong>asdf:</strong> hello world!</span>
+			<span>2/1, 6:16 PM</span>
+		</div>
+	</section>
+
+	<section id="new-message">
+		<form>
+			<div id="new-message-text">
+				<input type="text"
+					placeholder="Type your message - 120 character max!"
+					maxlength="120"
+				/>
+				
+				<button id="send-message" class="clear">Send</button>
+			</div>
+
+			<div id="new-message-color">
+				<span>Message color:</span>
+
+				<button class="clear-button active">All</button>
+				<button class="red-button">R</button>
+				<button class="green-button">G</button>
+				<button class="blue-button">B</button>
+				<button class="yellow-button">Y</button>
+			</div>
+		</form>
+	</section>
+	
+	<div id="logout">
+		<span>Logged in as ~username~</span>
+		<button>Logout</button>
+	</div>
+</section>
 
