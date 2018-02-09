@@ -7,16 +7,16 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class PathingService {
-  constructor(private location: Location, private router: Router) { }
+	constructor(private location: Location, private router: Router) { }
 
-  pathToChat() {
-  	this.router.navigateByUrl('/chat', { skipLocationChange: true })
-  		.then(() => this.location.replaceState('/chat'));
-  }
+	pathToChat() {
+		this.router.navigateByUrl('/chat', { skipLocationChange: true })
+			.then(() => this.location.replaceState('/chat'));
+	}
 
-  pathToLogin() {
-  	this.router.navigateByUrl('/login', { skipLocationChange: true })
-  		.then(() => this.location.replaceState('/login'));
-  }
+	pathToLogin() {
+		this.router.navigateByUrl('/login', { skipLocationChange: true })
+			.then(() => this.location.replaceState('/login'));
+	}
 }
 

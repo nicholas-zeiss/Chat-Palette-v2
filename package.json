@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "nodemon ./server/socket.js & ng serve --proxy-config proxy.config.json --sourcemaps=true",
-    "build": "ng build --prod",
+    "start-prod": "nodemon ./server/socket.js & ng serve --proxy-config proxy.config.json -prod",
+    "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
