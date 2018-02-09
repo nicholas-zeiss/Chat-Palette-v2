@@ -6,7 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
 
-import { AuthGuard } from './auth-guard.service';
+import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { PathingService } from './pathing.service';
 import { ServerCallsService } from './server-calls.service';
@@ -23,7 +23,7 @@ import { ServerCallsService } from './server-calls.service';
 		AuthGuard,
 		AuthService,
 		PathingService,
-		ServerCallsService
+		ServerCallsService,
 	]
 })
 export class CoreModule { }

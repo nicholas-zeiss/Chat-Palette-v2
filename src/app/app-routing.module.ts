@@ -3,7 +3,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AuthGuard } from './core/auth-guard.service';
+import { AuthGuard } from './core/auth.guard';
 
 
 const routes: Routes = [
@@ -14,6 +14,7 @@ const routes: Routes = [
 	},
 	{
 		path: 'login',
+		canActivate: [AuthGuard],
 		loadChildren: 'app/signin/signin.module#SigninModule'
 	},
 	{
