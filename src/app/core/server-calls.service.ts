@@ -19,20 +19,15 @@ export class ServerCallsService {
 
 	constructor(private http: HttpClient) { }
 
-	login({ username, password }) {
+	postAccount(route, { username, password }) {
 		return this.http
-			.post<string>('/api/login', { username, password })
-			.pipe(catchError(this.sendAuthErrorMessage));
-	}
-
-	signup({ username, password }) {
-		return this.http
-			.post<string>('/api/signup', { username, password })
-			.pipe(catchError(this.sendAuthErrorMessage));
-	}
-
-	private sendAuthErrorMessage(err: HttpErrorResponse) {
-		return new ErrorObservable(ERROR_MSGS[err.status] || 'Unknown error');
+			.post<string>('/api/' + route, { username, password })
+			.pipe(
+				catchError((error) => {
+					const msg = ERROR_MSGS[error.status] || 'Unknown error';
+					return new ErrorObservable(msg);
+				})
+			);
 	}
 }
 
