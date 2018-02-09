@@ -10,13 +10,17 @@ export class PathingService {
 	constructor(private location: Location, private router: Router) { }
 
 	pathToChat() {
-		this.router.navigateByUrl('/chat', { skipLocationChange: true })
-			.then(() => this.location.replaceState('/chat'));
+		if (this.router.url !== '/chat') {
+			this.router.navigateByUrl('/chat', { skipLocationChange: true })
+				.then(() => this.location.replaceState('/chat'));
+		}
 	}
 
 	pathToLogin() {
-		this.router.navigateByUrl('/login', { skipLocationChange: true })
-			.then(() => this.location.replaceState('/login'));
+		if (this.router.url !== '/login') {
+			this.router.navigateByUrl('/login', { skipLocationChange: true })
+				.then(() => this.location.replaceState('/login'));
+		}
 	}
 }
 
