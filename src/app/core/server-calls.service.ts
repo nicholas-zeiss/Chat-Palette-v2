@@ -5,7 +5,6 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { catchError } from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { Observable } from 'rxjs/Observable';
 
 
 const ERROR_MSGS = {
@@ -20,13 +19,13 @@ export class ServerCallsService {
 
 	constructor(private http: HttpClient) { }
 
-	login(username: string, password: string) {
+	login({ username, password }) {
 		return this.http
 			.post<string>('/api/login', { username, password })
 			.pipe(catchError(this.sendAuthErrorMessage));
 	}
 
-	signup(username: string, password: string) {
+	signup({ username, password }) {
 		return this.http
 			.post<string>('/api/signup', { username, password })
 			.pipe(catchError(this.sendAuthErrorMessage));

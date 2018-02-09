@@ -2,29 +2,14 @@
 
 <section id="signin">
 	<h1>{{ content.header }}</h1>
-	<form (ngSubmit)="handleSubmit()" #userForm="ngForm">
+	<form [formGroup]="userForm" (ngSubmit)="handleSubmit()" novalidate>
 		<div>
-			<input name="username"
-				placeholder="username"
-				type="text"
-				autofocus
-				required
-				[(ngModel)]="user.username"
-				(ngModelChange)="serverError = ''"
-			/>
-			<input name="password"
-				placeholder="password"
-				type="password"
-				required
-				[(ngModel)]="user.password"
-				(ngModelChange)="serverError = ''"
-			/>
+			<input formControlName="username" placeholder="username" type="text" autofocus/>
+			<input formControlName="password" placeholder="password" type="password"/>
 		</div>
 		<p *ngIf="serverError">{{ serverError }}</p>
-		<input [disabled]="!userForm.form.valid" type="submit" value="{{ content.submitMsg }}"/>
+		<input [disabled]="!userForm.valid" type="submit" value="{{ content.submitMsg }}"/>
 	</form>
-	<button (click)="switchView()">
-		{{ content.viewMsg }}
-	</button>
+	<button (click)="switchView()">{{ content.viewMsg }}</button>
 </section>
 

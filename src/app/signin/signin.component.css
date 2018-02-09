@@ -42,7 +42,7 @@
 			font-size: 1rem;
 		}
 
-		#signin form input[required] {
+		#signin form input {
 			padding: .3rem .5rem;
 			border: 1px solid #5a5959;
 			border-radius: 5px;
@@ -54,11 +54,11 @@
 			background-color: #f7f7f7;
 		}
 
-		#signin form input[required]:focus {
+		#signin form input:focus {
 			box-shadow: 0 0 7px 1px #0095ff;
 		}
 
-		#signin form input[placeholder='username'] {
+		#signin form input:first-child {
 			margin-bottom: 1rem;
 		}
 
