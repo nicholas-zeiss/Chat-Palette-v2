@@ -1,11 +1,9 @@
 
 
-<span>{{ label }}</span>
-<button
-	*ngFor="let color of COLORS"
-		[class]="getClassNames(color)"
-		(click)="selectColor(color)"
-	>
-	{{ color.label }}
-</button>
+<label [class.strong]="label.bold">{{ label.text }}</label>
+<span *ngFor="let color of COLORS">
+	<button [class]="getClassNames(color)" (click)="changeColor.emit(color)">
+		{{ color.label }}
+	</button>
+</span>
 

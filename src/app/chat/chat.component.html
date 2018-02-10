@@ -2,11 +2,16 @@
 
 <section id="chat-container">
 	<header id="chat-header">
-		<h2>Showing all messages</h2>
-		<app-color-selector [currColor]="filterColor" label="Filter:"></app-color-selector>
+		<h2>Showing {{ filterColor.value }} messages</h2>
+		<app-color-selector
+			(changeColor)="filterColor = $event"
+			[currColor]="filterColor"
+			[label]="{ bold: true, text: 'Filter:'}"
+		>
+		</app-color-selector>
 	</header>
-	
-	
+
+
 	<section id="messages-container">
 		<div class="message green">
 			<span><strong>asdf:</strong> hello world!</span>
@@ -16,24 +21,27 @@
 
 	<section id="new-message">
 		<form>
-			<div id="new-message-text">
-				<input type="text"
-					placeholder="Type your message - 120 character max!"
-					maxlength="120"
-				/>
-				
-				<button id="send-message" class="clear">Send</button>
-			</div>
+			<input type="text"
+				placeholder="Type your message - 120 character max!"
+				maxlength="120"
+			/>
 
-			<div id="new-message-color">
-				<app-color-selector [currColor]="messageColor" label="Message Color:"></app-color-selector>
-			</div>
+			<input [class]="messageColor.value" id="send-message" type="submit" value="Send" disabled/>
 		</form>
 	</section>
-	
-	<div id="logout">
-		<span>Logged in as ~username~</span>
-		<button>Logout</button>
-	</div>
+
+	<section id="controls">
+		<span id="logout">
+			<span>Logged in as ~username~</span>
+			<button>Logout</button>
+		</span>
+
+		<app-color-selector
+			(changeColor)="messageColor = $event"
+			[currColor]="messageColor"
+			[label]="{ bold: false, text: 'Message color:'}"
+		>
+		</app-color-selector>
+	</section>
 </section>
 

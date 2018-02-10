@@ -6,7 +6,7 @@ export interface Color {
 }
 
 export const COLOR_DETAILS = [
-	{ label: 'All', value: 'clear' },
+	{ label: 'All', value: 'all' },
 	{ label: 'R',   value: 'red' },
 	{ label: 'G',   value: 'green' },
 	{ label: 'B',   value: 'blue' },

@@ -14,6 +14,10 @@ import { Color, COLOR_DETAILS } from './color-selector/color.model';
 })
 export class ChatComponent {
 	filterColor = COLOR_DETAILS[0];
-	messageColor = COLOR_DETAILS[2];
+	messageColor = COLOR_DETAILS[0];
+
+	changeFilter(color) {
+		this.filterColor = color;
+	}
 }
 

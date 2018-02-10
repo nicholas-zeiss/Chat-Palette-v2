@@ -1,13 +1,18 @@
 
 
-span {
-	font-size: 1.25rem;
-	font-weight: bold;
+label {
 	margin-right: .5rem;
 	vertical-align: middle;
 }
 
- button {
+
+.strong {
+	font-size: 1.25rem;
+	font-weight: bold;
+}
+
+
+button {
 	border-radius: 5px;
 	box-shadow: 0 0 3px #383838;
 	cursor: pointer;
@@ -16,7 +21,6 @@ span {
 	margin: 0 .25rem;
 	outline: none;
 	padding: .3rem .75rem;
-	position: relative;
 	transition: transform .05s ease, box-shadow .2s ease;
 }
 
@@ -26,34 +30,37 @@ button:hover {
 }
 
 
-button.active {
+.active {
 	transform: scale(1.2);
 }
 
 
-.clear-button {
+.all {
 	background-color: white;
 	border: 1px solid transparent;
 }
 
 
-.red-button {
+.red {
 	background-color: red;
 	border: 1px solid #484848;
 }
 
-.blue-button {
+
+.blue {
 	background-color: #4b4bff;
 	border: 1px solid #3a3a3a;
 	text-shadow: 0 0 2px rgba(253, 253, 253, 0.18);
 }
 
-.green-button {
+
+.green {
 	background-color: #13bb13;
 	border: 1px solid #545454;
 }
 
-.yellow-button {
+
+.yellow {
 	background-color: yellow;
 	border: 1px solid #737373;
 }

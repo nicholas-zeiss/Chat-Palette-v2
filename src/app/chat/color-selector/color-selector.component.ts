@@ -1,6 +1,6 @@
 
 
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 import { Color, COLOR_DETAILS } from './color.model';
 
@@ -10,31 +10,21 @@ import { Color, COLOR_DETAILS } from './color.model';
 	templateUrl: './color-selector.component.html',
 	styleUrls: ['./color-selector.component.css']
 })
-export class ColorSelectorComponent implements OnInit {
+export class ColorSelectorComponent {
 	COLORS = COLOR_DETAILS;
 	@Input() currColor: Color;
-	@Input() label: string;
+	@Input() label: { bold: boolean, text: string };
 	@Output() changeColor = new EventEmitter<Color>();
 
 
-	ngOnInit() {
-		// console.log(this.currColor);
-	}
-
-
 	getClassNames(color) {
-		let classes = color.value + '-button';
+		let className = color.value;
 
 		if (color === this.currColor) {
-			classes += ' active';
+			className += ' active';
 		}
 
-		return classes;
-	}
-
-
-	selectColor(color: Color) {
-		console.log(color);
+		return className;
 	}
 }
 
