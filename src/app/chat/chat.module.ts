@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ChatRoutingModule } from './chat-routing.module';
 import { ChatComponent } from './chat.component';
+import { ColorSelectorComponent } from './color-selector/color-selector.component';
 
 
 @NgModule({
@@ -16,6 +17,7 @@ import { ChatComponent } from './chat.component';
 	],
 	declarations: [
 		ChatComponent,
+		ColorSelectorComponent
 	]
 })
 export class ChatModule { }

@@ -1,0 +1,11 @@
+
+
+<span>{{ label }}</span>
+<button
+	*ngFor="let color of COLORS"
+		[class]="getClassNames(color)"
+		(click)="selectColor(color)"
+	>
+	{{ color.label }}
+</button>
+

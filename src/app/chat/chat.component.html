@@ -3,15 +3,7 @@
 <section id="chat-container">
 	<header id="chat-header">
 		<h2>Showing all messages</h2>
-
-		<span>
-			<span>Filter:</span>
-			<button class="clear-button active">All</button>
-			<button class="red-button">R</button>
-			<button class="green-button">G</button>
-			<button class="blue-button">B</button>
-			<button class="yellow-button">Y</button>
-		</span>
+		<app-color-selector [currColor]="filterColor" label="Filter:"></app-color-selector>
 	</header>
 	
 	
@@ -34,13 +26,7 @@
 			</div>
 
 			<div id="new-message-color">
-				<span>Message color:</span>
-
-				<button class="clear-button active">All</button>
-				<button class="red-button">R</button>
-				<button class="green-button">G</button>
-				<button class="blue-button">B</button>
-				<button class="yellow-button">Y</button>
+				<app-color-selector [currColor]="messageColor" label="Message Color:"></app-color-selector>
 			</div>
 		</form>
 	</section>
