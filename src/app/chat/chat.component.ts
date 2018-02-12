@@ -4,10 +4,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { ColorSelectorComponent } from './color-selector/color-selector.component';
-import { Color, COLOR_DETAILS } from './color-selector/color.model';
+import { Color, COLORS } from '../shared/color.model';
 import { AuthService } from '../core/auth.service';
+import { Message } from '../shared/message.model';
 import { ServerCallsService } from '../core/server-calls.service';
-import { Message } from './message.model';
 
 
 @Component({
@@ -17,8 +17,8 @@ import { Message } from './message.model';
 })
 export class ChatComponent implements OnInit {
 
-	filterColor = COLOR_DETAILS[0];
-	messageColor = COLOR_DETAILS[0];
+	filterColor = COLORS[0];
+	messageColor = COLORS[0];
 	messages: Message[];
 	username: string;
 

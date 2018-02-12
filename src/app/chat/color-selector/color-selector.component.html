@@ -3,7 +3,7 @@
 <label [class.strong]="label.bold">{{ label.text }}</label>
 <span *ngFor="let color of COLORS">
 	<button [class]="getClassNames(color)" (click)="changeColor.emit(color)">
-		{{ color.label }}
+		{{ color.btnLabel }}
 	</button>
 </span>
 

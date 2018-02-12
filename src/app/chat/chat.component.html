@@ -2,7 +2,7 @@
 
 <section id="chat-container">
 	<header id="chat-header">
-		<h2>Showing {{ filterColor.value }} messages</h2>
+		<h2>Showing {{ filterColor.displayLabel }} messages</h2>
 		<app-color-selector
 			(changeColor)="filterColor = $event"
 			[currColor]="filterColor"
@@ -13,10 +13,6 @@
 
 
 	<section id="messages-container">
-		<div class="message green">
-			<span><strong>asdf:</strong> hello world!</span>
-			<span>2/1, 6:16 PM</span>
-		</div>
 	</section>
 
 	<section id="new-message">
@@ -26,7 +22,7 @@
 				maxlength="120"
 			/>
 
-			<input [class]="messageColor.value" id="send-message" type="submit" value="Send" disabled/>
+			<input [class]="messageColor.className" id="send-message" type="submit" value="Send" disabled/>
 		</form>
 	</section>
 

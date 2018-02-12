@@ -59,7 +59,7 @@ button {
 }
 
 
-.message.all {
+.message.clear {
 	background-color: #f1f1f1;
 	border: 1px solid #7b7b7b;
 }
@@ -146,12 +146,12 @@ form > input:disabled:last-child {
 }
 
 
-form > input.all:last-child {
+form > input.clear:last-child {
 	background-color: #f1f1f1;
 }
 
 
-form > input.all:last-child:disabled {
+form > input.clear:last-child:disabled {
 	background-color: #928f8f;
 }
 

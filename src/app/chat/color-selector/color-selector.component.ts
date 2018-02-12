@@ -2,7 +2,7 @@
 
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { Color, COLOR_DETAILS } from './color.model';
+import { Color, COLORS } from '../../shared/color.model';
 
 
 @Component({
@@ -11,14 +11,15 @@ import { Color, COLOR_DETAILS } from './color.model';
 	styleUrls: ['./color-selector.component.css']
 })
 export class ColorSelectorComponent {
-	COLORS = COLOR_DETAILS;
+
+	COLORS = COLORS;
 	@Input() currColor: Color;
 	@Input() label: { bold: boolean, text: string };
 	@Output() changeColor = new EventEmitter<Color>();
 
 
 	getClassNames(color) {
-		let className = color.value;
+		let { className } = color;
 
 		if (color === this.currColor) {
 			className += ' active';

@@ -8,7 +8,7 @@ import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { Observable } from 'rxjs/Observable';
 
 import { AuthService } from './auth.service';
-import { User } from './user.model';
+import { User } from '../shared/user.model';
 
 
 const ERROR_MSGS = {
