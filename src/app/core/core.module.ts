@@ -10,6 +10,7 @@ import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { PathingService } from './pathing.service';
 import { ServerCallsService } from './server-calls.service';
+import { WebsocketService } from './websocket.service';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { ServerCallsService } from './server-calls.service';
 		AuthService,
 		PathingService,
 		ServerCallsService,
+		WebsocketService
 	]
 })
 export class CoreModule { }

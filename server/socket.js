@@ -11,7 +11,7 @@ const Messages = require('./controllers/messageController.js');
 const server = require('./expressServer');
 const { jwtSecret } = require('./utils');
 
-const socketio = require('socket.io')(server.app);
+const socketio = require('socket.io')(server);
 const socketioJwt = require('socketio-jwt');
 
 

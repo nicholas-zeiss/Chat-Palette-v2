@@ -28,7 +28,6 @@ app.use(express.static(path.resolve(__dirname, '../dist')));
 app.use('/api/messages', expressJwt({ secret: jwtSecret }));
 
 
-
 //---------------------------------------------------------------
 //												API Endpoints
 //---------------------------------------------------------------

@@ -10,6 +10,7 @@ export class PathingService {
 
 	constructor(private location: Location, private router: Router) { }
 
+
 	pathToChat(): void {
 		if (this.router.url !== '/chat') {
 			this.router
@@ -17,6 +18,7 @@ export class PathingService {
 				.then(() => this.location.replaceState('/chat'));
 		}
 	}
+
 
 	pathToLogin(): void {
 		if (this.router.url !== '/login') {

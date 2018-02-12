@@ -17,19 +17,26 @@
 
 	<section id="new-message">
 		<form>
-			<input type="text"
-				placeholder="Type your message - 120 character max!"
+			<input
 				maxlength="120"
+				placeholder="Type your message - 120 character max!"
+				type="text"
 			/>
 
-			<input [class]="messageColor.className" id="send-message" type="submit" value="Send" disabled/>
+			<input
+				id="send-message"
+				type="submit"
+				value="Send"
+				[class]="messageColor.className"
+				(click)="emitMessage()"
+			/>
 		</form>
 	</section>
 
 	<section id="controls">
 		<span id="logout">
 			<span>Logged in as {{ username }}</span>
-			<button>Logout</button>
+			<button (click)="logout()">Logout</button>
 		</span>
 
 		<app-color-selector
