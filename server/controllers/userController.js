@@ -6,7 +6,9 @@
 
 
 const bcrypt = require('bcryptjs');
+
 const User = require('../models/user.js');
+const { logError } = require('../utils');
 
 
 exports.createUser = (username, password, cb) => {
@@ -15,26 +17,29 @@ exports.createUser = (username, password, cb) => {
 		password: bcrypt.hashSync(password)
 	})
 		.save()
-		.then(user => user ? cb(user.toJSON()) : cb(null));
+		.then((user) => user ? cb(user.toJSON()) : cb(null))
+		.catch(logError('Error creating user in db:'));
 };
 
 
 exports.getUser = (username, password, cb) => {
 	new User({ username })
 		.fetch()
-		.then(user => {
+		.then((user) => {
 			if (user && bcrypt.compareSync(password, user.get('password'))) {
-				cb(user.toJSON());
+				return cb(user.toJSON());
 			} else {
-				cb(null);
+				return cb(null);
 			}
-		});
+		})
+		.catch(logError('Error retreiving user in db:'));
 };
 
 
 exports.userExists = (username, cb) => {
 	new User({ username })
 		.fetch()
-		.then(user => user ? cb(user.toJSON()) : cb(null));
+		.then((user) => user ? cb(user.toJSON()) : cb(null))
+		.catch(logError('Error finding user in db:'));
 };
 

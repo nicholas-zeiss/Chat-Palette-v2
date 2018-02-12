@@ -9,25 +9,31 @@
 
 const Messages = require('./controllers/messageController.js');
 const server = require('./expressServer');
+const { jwtSecret } = require('./utils');
 
-const io = require('socket.io')(server.app);
+const socketio = require('socket.io')(server.app);
 const socketioJwt = require('socketio-jwt');
 
 
-io
-	.on('connection', socketioJwt.authorize({
-		secret: server.jwtSecret,
-		timeout: 15000
-	}))
-	.on('authenticated', socket => {
-		socket.on('message', msg => {
-			Messages.createMessage(msg, msg => {
-				if (msg) {
-					io.emit('message', msg);
-				} else {
-					socket.emit('500');
-				}
-			});
+const authorize = socketioJwt.authorize({
+	secret: jwtSecret,
+	timeout: 15000
+});
+
+const messageListener = (socket) => {
+	socket.on('message', (msg) => {
+		Messages.createMessage(msg, (msg) => {
+			if (msg) {
+				socketio.emit('message', msg);
+			} else {
+				socket.emit('500');
+			}
 		});
 	});
+};
+
+
+socketio
+	.on('connection', authorize)
+	.on('authenticated', messageListener);
 

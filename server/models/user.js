@@ -1,6 +1,6 @@
 /**
  *
- *	Creates a user model for bookshelf. 
+ *	Creates a user model for bookshelf.
  *
 **/
 
