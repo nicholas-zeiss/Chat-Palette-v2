@@ -5,6 +5,10 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 
 import { catchError } from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { Observable } from 'rxjs/Observable';
+
+import { AuthService } from './auth.service';
+import { User } from './user.model';
 
 
 const ERROR_MSGS = {
@@ -17,17 +21,32 @@ const ERROR_MSGS = {
 @Injectable()
 export class ServerCallsService {
 
-	constructor(private http: HttpClient) { }
+	constructor(
+		private auth: AuthService,
+		private http: HttpClient
+	) { }
 
-	postAccount(route, { username, password }) {
+
+	getMessages(): Observable<any> {
+		if (!this.auth.isLoggedIn) {
+			return null;
+		}
+
+		return this.http.get(
+				'/api/messages',
+				{ headers: { Authorization: 'Bearer ' + this.auth.token }}
+			)
+			.pipe(catchError((error) => new ErrorObservable(null)));
+	}
+
+
+	postAccount(route: string, user: User): Observable<any> {
 		return this.http
-			.post<string>('/api/' + route, { username, password })
-			.pipe(
-				catchError((error) => {
-					const msg = ERROR_MSGS[error.status] || 'Unknown error';
-					return new ErrorObservable(msg);
-				})
-			);
+			.post<string>('/api/' + route, user)
+			.pipe(catchError((error) => {
+				const msg = ERROR_MSGS[error.status] || 'Unknown error';
+				return new ErrorObservable(msg);
+			}));
 	}
 }
 

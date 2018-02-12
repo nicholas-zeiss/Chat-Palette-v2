@@ -25,7 +25,6 @@ export class SigninComponent {
 		private authService: AuthService,
 		private serverCalls: ServerCallsService
 	) {
-
 		this.userForm = new FormGroup({
 			username: new FormControl('', Validators.required ),
 			password: new FormControl('', Validators.required )
@@ -33,20 +32,26 @@ export class SigninComponent {
 
 		this.userForm.valueChanges
 			.subscribe(() => this.serverError = '');
-
 	}
 
 
-	handleSubmit() {
-		this.serverCalls.postAccount(this.view, this.userForm.value)
+	handleSubmit(): void {
+		this.serverCalls
+			.postAccount(this.view, this.userForm.value)
 			.subscribe(
-				(JWT) => this.authService.setToken(JWT),
-				(serverError) => this.serverError = serverError
+				(JWT: string) => this.authService.setToken(
+					this.userForm.value.username,
+					JWT
+				),
+				(serverError: string) => {
+					this.userForm.reset();
+					this.serverError = serverError;
+				}
 			);
 	}
 
 
-	switchView() {
+	switchView(): void {
 		this.serverError = '';
 		this.userForm.reset();
 		this.view = this.content.otherView;
