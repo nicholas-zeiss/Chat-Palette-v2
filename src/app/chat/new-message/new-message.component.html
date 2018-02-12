@@ -1,0 +1,14 @@
+
+
+<section id="new-message">
+	<form (ngSubmit)="submitMessage()" novalidate>
+		<input [formControl]="messageForm" placeholder="Type your message - 120 character max!" type="text"/>
+		<input
+			type="submit"
+			value="Send"
+			[class]="color.className"
+			[disabled]="!messageForm.valid"
+		/>
+	</form>
+</section>
+

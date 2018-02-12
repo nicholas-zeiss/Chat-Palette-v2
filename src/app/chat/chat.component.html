@@ -13,25 +13,20 @@
 
 
 	<section id="messages-container">
+		<div *ngFor="let message of messages">
+			<div [class]="'message ' + message.color" *ngIf="isVisible(message)">
+				<span><strong>{{ message.username + ' :' }}</strong>{{ ' ' + message.content }}</span>
+				<span>{{ message.created_at | date:'M/d, h:mm a' }}</span>
+			</div>
+		</div>
 	</section>
 
-	<section id="new-message">
-		<form>
-			<input
-				maxlength="120"
-				placeholder="Type your message - 120 character max!"
-				type="text"
-			/>
-
-			<input
-				id="send-message"
-				type="submit"
-				value="Send"
-				[class]="messageColor.className"
-				(click)="emitMessage()"
-			/>
-		</form>
-	</section>
+	<app-new-message
+		[color]="messageColor"
+		[username]="username"
+		(newMessage)="emitMessage($event)"
+	>
+	</app-new-message>
 
 	<section id="controls">
 		<span id="logout">

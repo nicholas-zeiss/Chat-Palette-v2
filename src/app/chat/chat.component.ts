@@ -1,7 +1,6 @@
 
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnDestroy } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -20,7 +19,7 @@ import { WebsocketService } from '../core/websocket.service';
 	styleUrls: ['./chat.component.css'],
 	templateUrl: './chat.component.html'
 })
-export class ChatComponent implements OnDestroy, OnInit {
+export class ChatComponent implements OnDestroy {
 
 	filterColor = COLORS[0];
 	messageColor = COLORS[0];
@@ -33,10 +32,7 @@ export class ChatComponent implements OnDestroy, OnInit {
 		private auth: AuthService,
 		private serverCalls: ServerCallsService,
 		private wsService: WebsocketService
-	) { }
-
-
-	ngOnInit(): void {
+	) {
 		this.username = this.auth.username;
 
 		this.serverCalls
@@ -51,22 +47,24 @@ export class ChatComponent implements OnDestroy, OnInit {
 	}
 
 
+	isVisible(message: Message) {
+		return this.filterColor.displayLabel === 'all'
+			|| this.filterColor.className === message.color;
+	}
+
+
 	connectSocket(): void {
 		this.websocket = this.wsService.connect();
 
 		this.messageListener = this.websocket
-			.subscribe((msg: Message) => {
-				console.log(msg);
+			.subscribe((message: Message) => {
+				this.messages.push(message);
 			});
 	}
 
 
-	emitMessage(): void {
-		this.websocket.next({
-			color: 'red',
-			content: 'foobar',
-			username: 'test'
-		});
+	emitMessage(message: Message): void {
+		this.websocket.next(message);
 	}
 
 

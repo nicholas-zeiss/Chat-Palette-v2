@@ -9,7 +9,6 @@ import { PathingService } from './pathing.service';
 export class AuthService {
 
 	private authenticated: boolean;
-	username: string;
 
 	constructor(private pathingService: PathingService) {
 		this.authenticated = !!window.sessionStorage.getItem('token');
@@ -26,9 +25,14 @@ export class AuthService {
 	}
 
 
+	get username(): string {
+		return window.sessionStorage.getItem('username');
+	}
+
+
 	setToken(username: string, JWT: string): void {
+		window.sessionStorage.setItem('username', username);
 		window.sessionStorage.setItem('token', JWT);
-		this.username = username;
 		this.authenticated = true;
 		this.pathingService.pathToChat();
 	}
