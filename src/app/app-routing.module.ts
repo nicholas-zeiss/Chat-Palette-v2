@@ -1,3 +1,8 @@
+/**
+ *
+ *	Sets up lazy loading of our two views, signup and chat.
+ *
+**/
 
 
 import { NgModule } from '@angular/core';

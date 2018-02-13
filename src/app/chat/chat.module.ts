@@ -1,3 +1,9 @@
+/**
+ *
+ *  Feature module for the chat component. Displays messages, allows user to filter by color,
+ *	receives new messages from other users, and allows user to send their own messages.
+ *
+**/
 
 
 import { NgModule } from '@angular/core';

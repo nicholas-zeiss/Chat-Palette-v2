@@ -1,3 +1,8 @@
+/**
+ *
+ *	Model for a single message. Used in the chat feature module and the WebsocketService.
+ *
+**/
 
 
 export interface Message {

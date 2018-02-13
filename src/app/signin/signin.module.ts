@@ -1,3 +1,10 @@
+/**
+ *
+ *  Feature module for logging in/signing up. Handles submission of login/sign up details.
+ *  If successful, AuthService (in core module) sets the session token and username onto the window's sessionStorage
+ *  and routes us to the chat view. If unsuccessful, the controller removes the token should one already exist.
+ *
+**/
 
 
 import { NgModule } from '@angular/core';

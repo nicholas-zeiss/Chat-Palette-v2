@@ -1,3 +1,11 @@
+/**
+ *
+ *  Component for login/signup pages. As the two only differ in a few lines of text we switch
+ *	between the two by altering the content member of SigninComponent. This component sends
+ *	the submitted account information to ServerCallsService, and if the server accepts it
+ *	it sends the JWT to AuthService which routes us to the chat component.
+ *
+**/
 
 
 import { Component } from '@angular/core';
@@ -65,6 +73,7 @@ export class SigninComponent {
 	}
 
 
+	// Switch between login and signup pages
 	switchView(): void {
 		this.serverError = '';
 		this.userForm.reset();

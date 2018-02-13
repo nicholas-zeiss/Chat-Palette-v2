@@ -1,3 +1,8 @@
+/**
+ *
+ *  Component for the new message form.
+ *
+**/
 
 
 import { Component, EventEmitter, Input, Output } from '@angular/core';

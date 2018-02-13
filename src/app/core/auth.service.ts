@@ -1,3 +1,9 @@
+/**
+ *
+ *	Responsible for handling account/token storage/retrieval. Setting token automatically routes
+ *	user to chat component, removing it to signin component.
+ *
+**/
 
 
 import { Injectable } from '@angular/core';

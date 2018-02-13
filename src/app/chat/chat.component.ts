@@ -1,3 +1,17 @@
+/**
+ *
+ *  Top level component of the chat view. It coordinates interaction with ServerCallsService (to load extant
+ *	messages on initialization), AuthService to logout, and WebsocketService to receive/create new messages.
+ *
+ *	It also handles filtering displayed messages by color and setting the color of messages to be posted by the user
+ *  using two ColorSelectorComponents. The form for a new message is implemented with a NewMessageComponent.
+ *
+ *	Finally, when a new message is received and displayed it alerts the AutoScrollDirective to scroll down to
+ *	the new message.
+ *
+**/
+
+
 
 
 import { Component, EventEmitter, OnDestroy } from '@angular/core';
@@ -6,7 +20,6 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 
-import { ColorSelectorComponent } from './color-selector/color-selector.component';
 import { Color, COLORS } from '../shared/color.model';
 import { AuthService } from '../core/auth.service';
 import { Message } from '../shared/message.model';

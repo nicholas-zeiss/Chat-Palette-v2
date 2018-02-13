@@ -1,3 +1,9 @@
+/**
+ *
+ *  Component for the color selector buttons used to filter messages/choose the
+ *	color of a new message.
+ *
+**/
 
 
 import { Component, EventEmitter, Input, Output } from '@angular/core';

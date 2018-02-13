@@ -1,3 +1,9 @@
+/**
+ *
+ *	Used for guarding both the login/chat routes. These are accessible only when AuthService is
+ *	logged in/not logged in respectively.
+ *
+**/
 
 
 import { Injectable } from '@angular/core';

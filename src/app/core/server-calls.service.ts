@@ -1,3 +1,9 @@
+/**
+ *
+ *	Service for HTTP requests to the server. Handles login/signup and collection of extant messages when loading
+ *	the chat component.
+ *
+**/
 
 
 import { Injectable } from '@angular/core';

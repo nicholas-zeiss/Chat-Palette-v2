@@ -1,3 +1,8 @@
+/**
+ *
+ *	Service to interact with our Socket.io socket. Handles JWT authentication, message listening, and message emitting.
+ *
+**/
 
 
 import { Injectable } from '@angular/core';

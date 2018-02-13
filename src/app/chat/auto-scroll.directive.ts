@@ -1,3 +1,10 @@
+/**
+ *
+ *  A directive that is attached to the container of the message elements in the chat view
+ *  that causes it to scroll down to display the latest message when a scroll event is
+ *	emitted. jQuery's animate method is used to implement a smooth scroll.
+ *
+**/
 
 
 import { Directive, ElementRef, EventEmitter, Input, OnInit } from '@angular/core';

@@ -1,3 +1,8 @@
+/**
+ *
+ *	Model for the various colors a message can possess. Used in the chat feature and the Message model.
+ *
+**/
 
 
 export interface Color {

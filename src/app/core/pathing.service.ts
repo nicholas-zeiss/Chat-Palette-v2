@@ -1,3 +1,8 @@
+/**
+ *
+ *	Service for routing between chat and login routes. Modifies history to keep the single page illusion.
+ *
+**/
 
 
 import { Location } from '@angular/common';
