@@ -45,6 +45,7 @@ button {
 	overflow-x: hidden;
 	overflow-y: scroll;
 	padding: 1rem;
+	position: relative;
 	width: calc(100% - 2rem);
 }
 

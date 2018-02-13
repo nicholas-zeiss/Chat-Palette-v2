@@ -1,6 +1,6 @@
 
 
-import { Component, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, OnDestroy } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
@@ -25,6 +25,7 @@ export class ChatComponent implements OnDestroy {
 	messageColor = COLORS[0];
 	messages: Message[];
 	messageListener: Subscription;
+	scrollEmitter = new EventEmitter<any>();
 	username: string;
 	websocket: Subject<any>;
 
@@ -59,6 +60,7 @@ export class ChatComponent implements OnDestroy {
 		this.messageListener = this.websocket
 			.subscribe((message: Message) => {
 				this.messages.push(message);
+				this.scrollEmitter.emit('scroll');
 			});
 	}
 

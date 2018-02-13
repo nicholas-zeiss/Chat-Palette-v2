@@ -12,7 +12,7 @@
 	</header>
 
 
-	<section id="messages-container">
+	<section id="messages-container" [appAutoScroll]="scrollEmitter">
 		<div *ngFor="let message of messages">
 			<div [class]="'message ' + message.color" *ngIf="isVisible(message)">
 				<span><strong>{{ message.username + ' :' }}</strong>{{ ' ' + message.content }}</span>
