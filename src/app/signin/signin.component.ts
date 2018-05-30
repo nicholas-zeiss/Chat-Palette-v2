@@ -13,20 +13,21 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { AuthService } from '../core/auth.service';
 import { ServerCallsService } from '../core/server-calls.service';
+import { SigninView, SigninViewDetails } from '../shared/models';
 
 
-const CONTENT = {
-	login: {
-		header:  'User Login',
-		otherView: 'signup',
+const VIEW_DETAILS = {
+	[SigninView.login]: {
+		header: 'User Login',
+		otherView: SigninView.signup,
 		submitMsg: 'Login',
-		viewMsg:  'Need an account? Sign up here!'
+		viewMsg: 'Need an account? Sign up here!'
 	},
-	signup: {
-		header:  'Signup',
-		otherView: 'login',
+	[SigninView.signup]: {
+		header: 'Signup',
+		otherView: SigninView.login,
 		submitMsg: 'Signup',
-		viewMsg:  'Already have an account? Login'
+		viewMsg: 'Already have an account? Login'
 	}
 };
 
@@ -37,23 +38,27 @@ const CONTENT = {
 	templateUrl: './signin.component.html'
 })
 export class SigninComponent {
-
-	content = CONTENT.login;
-	serverError = '';
-	view = 'login';
+	serverError: string = null;
+	view: SigninView = SigninView.login;
 	userForm: FormGroup;
+
 
 	constructor(
 		private authService: AuthService,
 		private serverCalls: ServerCallsService
 	) {
 		this.userForm = new FormGroup({
-			password: new FormControl('', Validators.required ),
-			username: new FormControl('', Validators.required )
+			password: new FormControl('', Validators.required),
+			username: new FormControl('', Validators.required)
 		});
 
 		this.userForm.valueChanges
-			.subscribe(() => this.serverError = '');
+			.subscribe(() => this.serverError = null);
+	}
+
+
+	get content(): SigninViewDetails {
+		return VIEW_DETAILS[this.view];
 	}
 
 
@@ -65,9 +70,9 @@ export class SigninComponent {
 					this.userForm.value.username,
 					JWT
 				),
-				(serverError: string) => {
+				(error: string) => {
 					this.userForm.reset();
-					this.serverError = serverError;
+					this.serverError = error;
 				}
 			);
 	}
@@ -75,10 +80,9 @@ export class SigninComponent {
 
 	// Switch between login and signup pages
 	switchView(): void {
-		this.serverError = '';
+		this.serverError = null;
 		this.userForm.reset();
 		this.view = this.content.otherView;
-		this.content = CONTENT[this.view];
 	}
 }
 

@@ -13,8 +13,8 @@ import { PathingService } from './pathing.service';
 
 @Injectable()
 export class AuthService {
-
 	private authenticated: boolean;
+
 
 	constructor(private pathingService: PathingService) {
 		this.authenticated = !!window.sessionStorage.getItem('token');

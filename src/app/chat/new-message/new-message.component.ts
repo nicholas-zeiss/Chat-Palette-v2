@@ -18,11 +18,11 @@ import { Message } from '../../shared/message.model';
 	templateUrl: './new-message.component.html'
 })
 export class NewMessageComponent {
+	@Input() color: Color;
+	@Output() newMessage = new EventEmitter<Message>();
+	@Input() username: string;
 
 	messageForm: FormControl;
-	@Input() color: Color;
-	@Input() username: string;
-	@Output() newMessage = new EventEmitter<Message>();
 
 	constructor() {
 		this.messageForm = new FormControl('', [

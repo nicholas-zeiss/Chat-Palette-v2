@@ -13,6 +13,7 @@ import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError } from 'rxjs/operators';
 
+import { SigninView } from '../shared/models';
 import { User } from '../shared/user.model';
 import { AuthService } from './auth.service';
 
@@ -46,13 +47,12 @@ export class ServerCallsService {
 	}
 
 
-	postAccount(route: string, user: User): Observable<any> {
+	postAccount(route: SigninView, user: User): Observable<string> {
 		return this.http
 			.post<string>('/api/' + route, user)
-			.pipe(catchError((error) => {
-				const msg = ERROR_MSGS[error.status] || 'Unknown error';
-				return new ErrorObservable(msg);
-			}));
+			.pipe(catchError((err: HttpErrorResponse): Observable<string> => (
+				new ErrorObservable(ERROR_MSGS[err.status] || 'Unknown error')
+			)));
 	}
 }
 

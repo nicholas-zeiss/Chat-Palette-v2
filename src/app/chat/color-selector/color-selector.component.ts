@@ -17,14 +17,14 @@ import { Color, COLORS } from '../../shared/color.model';
 	templateUrl: './color-selector.component.html'
 })
 export class ColorSelectorComponent {
-
-	COLORS = COLORS;
 	@Input() currColor: Color;
 	@Input() label: { bold: boolean, text: string };
 	@Output() changeColor = new EventEmitter<Color>();
 
+	COLORS = COLORS;
 
-	getClassNames(color) {
+
+	getClassNames(color: Color): string {
 		let { className } = color;
 
 		if (color === this.currColor) {

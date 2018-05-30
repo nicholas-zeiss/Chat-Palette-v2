@@ -7,11 +7,10 @@
 
 
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-
-import { Observable } from 'rxjs/Observable';
+import { ActivatedRouteSnapshot, CanActivate } from '@angular/router';
 
 import { AuthService } from './auth.service';
+import { PathingService } from './pathing.service';
 
 
 @Injectable()
@@ -19,21 +18,19 @@ export class AuthGuard implements CanActivate {
 
 	constructor(
 		private auth: AuthService,
-		private router: Router
+		private pathingService: PathingService
 	) { }
 
 
-	canActivate(
-		next: ActivatedRouteSnapshot,
-		state: RouterStateSnapshot): boolean {
-			if (next.url[0].path === 'chat' && !this.auth.isLoggedIn) {
-				this.router.navigate(['/login']);
-				return false;
+	canActivate(next: ActivatedRouteSnapshot): boolean {
+		if (next.url[0].path === 'chat' && !this.auth.isLoggedIn) {
+			this.pathingService.pathToLogin();
+			return false;
 
-			} else if (next.url[0].path === 'login' && this.auth.isLoggedIn) {
-				this.router.navigate(['/chat']);
-				return false;
-			}
+		} else if (next.url[0].path === 'login' && this.auth.isLoggedIn) {
+			this.pathingService.pathToChat();
+			return false;
+		}
 
 		return true;
 	}

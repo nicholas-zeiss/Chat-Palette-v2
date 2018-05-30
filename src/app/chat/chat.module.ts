@@ -18,8 +18,8 @@ import { NewMessageComponent } from './new-message/new-message.component';
 
 @NgModule({
 	declarations: [
-		ChatComponent,
 		ColorSelectorComponent,
+		ChatComponent,
 		NewMessageComponent,
 	],
 	imports: [

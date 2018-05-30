@@ -18,9 +18,9 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class WebsocketService {
-
-	destroy: () => void;
 	private socket: any;
+	destroy: () => void;
+
 
 	constructor(private auth: AuthService) {
 		this.destroy = () => {
@@ -32,7 +32,6 @@ export class WebsocketService {
 
 	connect(): Subject<any> {
 		this.socket = io(environment.ws);
-
 
 		const observable = new Observable(subscriber => {
 			this.socket
