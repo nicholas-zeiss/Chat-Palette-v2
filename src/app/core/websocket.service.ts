@@ -31,7 +31,7 @@ export class WebsocketService {
 
 
 	connect(): Subject<any> {
-		this.socket = io(environment.ws);
+		this.socket = environment.production ? io() : io(environment.ws);
 
 		const observable = new Observable(subscriber => {
 			this.socket

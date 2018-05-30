@@ -5,7 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "nodemon ./server/socket.js & ng serve --proxy-config proxy.config.json --sourcemaps=true --watch",
-    "start-prod": "nodemon ./server/socket.js & ng serve --proxy-config proxy.config.json -prod",
+    "start-prod": "ng build --prod && NODE_ENV=prod PORT=4200 node ./server/socket.js",
     "build": "ng build",
     "database": "sqlite3 ./server/data/data.sqlite",
     "test": "ng test",
