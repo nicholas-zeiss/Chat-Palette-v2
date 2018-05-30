@@ -48,8 +48,8 @@ export class SigninComponent {
 		private serverCalls: ServerCallsService
 	) {
 		this.userForm = new FormGroup({
-			username: new FormControl('', Validators.required ),
-			password: new FormControl('', Validators.required )
+			password: new FormControl('', Validators.required ),
+			username: new FormControl('', Validators.required )
 		});
 
 		this.userForm.valueChanges

@@ -13,8 +13,8 @@ import { Color, COLORS } from '../../shared/color.model';
 
 @Component({
 	selector: 'app-color-selector',
-	templateUrl: './color-selector.component.html',
-	styleUrls: ['./color-selector.component.css']
+	styleUrls: ['./color-selector.component.css'],
+	templateUrl: './color-selector.component.html'
 })
 export class ColorSelectorComponent {
 

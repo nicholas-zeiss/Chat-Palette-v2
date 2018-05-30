@@ -1,8 +1,8 @@
 
 
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 
@@ -14,12 +14,12 @@ import { WebsocketService } from './websocket.service';
 
 
 @NgModule({
+	exports: [RouterModule],
 	imports: [
 		CommonModule,
 		HttpClientModule,
 		RouterModule
 	],
-	exports: [RouterModule],
 	providers: [
 		AuthGuard,
 		AuthService,

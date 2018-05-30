@@ -15,28 +15,28 @@ export interface Color {
 export const COLORS: Color[] = [
 	{
 		btnLabel: 'All',
-		displayLabel: 'all',
-		className: 'clear'
+		className: 'clear',
+		displayLabel: 'all'
 	},
 	{
 		btnLabel: 'R',
-		displayLabel: 'red',
-		className: 'red'
+		className: 'red',
+		displayLabel: 'red'
 	},
 	{
 		btnLabel: 'G',
-		displayLabel: 'green',
-		className: 'green'
+		className: 'green',
+		displayLabel: 'green'
 	},
 	{
 		btnLabel: 'B',
-		displayLabel: 'blue',
-		className: 'blue'
+		className: 'blue',
+		displayLabel: 'blue'
 	},
 	{
 		btnLabel: 'Y',
-		displayLabel: 'yellow',
-		className: 'yellow'
+		className: 'yellow',
+		displayLabel: 'yellow'
 	}
 ];
 

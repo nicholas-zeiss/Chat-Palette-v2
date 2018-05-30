@@ -7,13 +7,13 @@
 
 import { Injectable } from '@angular/core';
 
-import * as io from 'socket.io-client';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
+import * as io from 'socket.io-client';
 
+import { environment } from '../../environments/environment';
 import { Message } from '../shared/message.model';
 import { AuthService } from './auth.service';
-import { environment } from '../../environments/environment';
 
 
 @Injectable()

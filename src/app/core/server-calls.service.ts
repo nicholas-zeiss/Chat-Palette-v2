@@ -6,15 +6,15 @@
 **/
 
 
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
-import { catchError } from 'rxjs/operators';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { Observable } from 'rxjs/Observable';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { catchError } from 'rxjs/operators';
 
-import { AuthService } from './auth.service';
 import { User } from '../shared/user.model';
+import { AuthService } from './auth.service';
 
 
 const ERROR_MSGS = {

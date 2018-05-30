@@ -12,8 +12,8 @@
 	</header>
 
 
-	<section id="messages-container" [appAutoScroll]="scrollEmitter">
-		<div *ngFor="let message of messages">
+	<section id="messages-container">
+		<div *ngFor="let message of messages" #msg>
 			<div [class]="'message ' + message.color" *ngIf="isVisible(message)">
 				<span><strong>{{ message.username + ' :' }}</strong>{{ ' ' + message.content }}</span>
 				<span>{{ message.created_at | date:'M/d, h:mm a' }}</span>

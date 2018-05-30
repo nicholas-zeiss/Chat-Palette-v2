@@ -13,14 +13,14 @@ import { AuthGuard } from './core/auth.guard';
 
 const routes: Routes = [
 	{
-		path: 'chat',
 		canActivate: [AuthGuard],
-		loadChildren: 'app/chat/chat.module#ChatModule'
+		loadChildren: 'app/chat/chat.module#ChatModule',
+		path: 'chat'
 	},
 	{
-		path: 'login',
 		canActivate: [AuthGuard],
-		loadChildren: 'app/signin/signin.module#SigninModule'
+		loadChildren: 'app/signin/signin.module#SigninModule',
+		path: 'login'
 	},
 	{
 		path: '**',
@@ -30,8 +30,8 @@ const routes: Routes = [
 
 
 @NgModule({
-	imports: [RouterModule.forRoot(routes)],
-	exports: [RouterModule]
+	exports: [RouterModule],
+	imports: [RouterModule.forRoot(routes)]
 })
 export class AppRoutingModule {}
 

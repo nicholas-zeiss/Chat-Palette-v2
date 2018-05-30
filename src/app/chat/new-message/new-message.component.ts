@@ -14,8 +14,8 @@ import { Message } from '../../shared/message.model';
 
 @Component({
 	selector: 'app-new-message',
-	templateUrl: './new-message.component.html',
-	styleUrls: ['./new-message.component.css']
+	styleUrls: ['./new-message.component.css'],
+	templateUrl: './new-message.component.html'
 })
 export class NewMessageComponent {
 

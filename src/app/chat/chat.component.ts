@@ -6,25 +6,24 @@
  *	It also handles filtering displayed messages by color and setting the color of messages to be posted by the user
  *  using two ColorSelectorComponents. The form for a new message is implemented with a NewMessageComponent.
  *
- *	Finally, when a new message is received and displayed it alerts the AutoScrollDirective to scroll down to
- *	the new message.
+ *	The message elements are accessed via ViewChildren so that when a new message is received it is scrolled into view.
  *
 **/
 
 
 
 
-import { Component, EventEmitter, OnDestroy } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, QueryList, ViewChildren } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { Subscription } from 'rxjs/Subscription';
 
-import { Color, COLORS } from '../shared/color.model';
 import { AuthService } from '../core/auth.service';
-import { Message } from '../shared/message.model';
 import { ServerCallsService } from '../core/server-calls.service';
 import { WebsocketService } from '../core/websocket.service';
+import { Color, COLORS } from '../shared/color.model';
+import { Message } from '../shared/message.model';
 
 
 @Component({
@@ -32,13 +31,14 @@ import { WebsocketService } from '../core/websocket.service';
 	styleUrls: ['./chat.component.css'],
 	templateUrl: './chat.component.html'
 })
-export class ChatComponent implements OnDestroy {
+export class ChatComponent implements AfterViewInit, OnDestroy {
+	@ViewChildren('msg') messageList: QueryList<any>;
 
 	filterColor = COLORS[0];
 	messageColor = COLORS[0];
 	messages: Message[];
 	messageListener: Subscription;
-	scrollEmitter = new EventEmitter<any>();
+	socketListener: Subscription;
 	username: string;
 	websocket: Subject<any>;
 
@@ -61,6 +61,17 @@ export class ChatComponent implements OnDestroy {
 	}
 
 
+	ngAfterViewInit(): void {
+		this.messageListener = this.messageList.changes
+			.subscribe(list => {
+				setTimeout(() => list.last.nativeElement.scrollIntoView({
+					behavior: 'smooth',
+					block: 'center'
+				}), 100);
+			});
+	}
+
+
 	isVisible(message: Message) {
 		return this.filterColor.displayLabel === 'all'
 			|| this.filterColor.className === message.color;
@@ -70,10 +81,9 @@ export class ChatComponent implements OnDestroy {
 	connectSocket(): void {
 		this.websocket = this.wsService.connect();
 
-		this.messageListener = this.websocket
+		this.socketListener = this.websocket
 			.subscribe((message: Message) => {
 				this.messages.push(message);
-				this.scrollEmitter.emit('scroll');
 			});
 	}
 
@@ -89,8 +99,10 @@ export class ChatComponent implements OnDestroy {
 
 
 	ngOnDestroy(): void {
-		if (this.messageListener !== undefined) {
-			this.messageListener.unsubscribe();
+		this.messageListener.unsubscribe();
+
+		if (this.socketListener !== undefined) {
+			this.socketListener.unsubscribe();
 		}
 	}
 }
