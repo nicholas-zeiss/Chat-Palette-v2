@@ -1,27 +1,27 @@
-# ChatPaletteV2
+# Chat-Palette-v2
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
+Chat-Pallete is a messaging app that allows you to paint every message with a different color. You can then select which color messages you would like to be displayed so that you can have multi-threaded conversations.
 
-## Development server
+Create an account then log in to chat with your cyber friends! Before you post a message be sure to choose a color.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Version 2 upgrades the project from AngularJS to Angular.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation
 
-## Build
+All you need to do to get this site up and running on a local is a few simple commands:
+```
+ $ git clone https://github.com/nicholas-zeiss/Chat-Palette-v2.git
+ $ cd Chat-Palette-v2/
+ $ mkdir server/data
+ $ npm i
+ $ npm start
+```
+That's it! Chat-Palette will now be running on your localhost at port 4200.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
-## Running unit tests
+## Implementation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Stack: Angular, Express, Socket.IO, SQL w/ Bookshelf.js
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+User information and messages are stored on the backend using Bookshelf, which implements a table for each. A successful login will return a JWT, which is stored in session storage allowing you to reload the page without having to login again. Once logged in the site uses that JWT to connect to the Socket.IO server; attempts to connect to the socket with an invalid token will force you back to the login page. Once connected, the socket will update your page in real time with messages created by others and will allow you to send your own back.

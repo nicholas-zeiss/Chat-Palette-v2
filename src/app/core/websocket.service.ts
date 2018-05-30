@@ -13,6 +13,7 @@ import { Subject } from 'rxjs/Subject';
 
 import { Message } from '../shared/message.model';
 import { AuthService } from './auth.service';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -30,7 +31,7 @@ export class WebsocketService {
 
 
 	connect(): Subject<any> {
-		this.socket = io('http://localhost:8080');
+		this.socket = io(environment.ws);
 
 
 		const observable = new Observable(subscriber => {
